@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>DnD character stat generator:</h1>
+    <div id="str" ></div>
+    <div id="dex" ></div>
+    <div id="con" ></div>
+    <div id="int" ></div>
+    <div id="wis" ></div>
+    <div id="cha" ></div>
+    <pre> </pre>
+    <button onclick="rollChar()">Reroll Stats</button>
+</body>
+<script>
+    function RollDice(){
+        let Dice =  Math.ceil(Math.random() * 6);
+        return Dice;
+    }
+    function rollStat(){
+
+        let d1 = RollDice();
+        let d2 = RollDice();
+        let d3 = RollDice();
+        let d4 = RollDice();
+
+        let lowestRoll = Math.min(d1, d2, d3, d4);
+        console.log("All Rolls:", d1, d2, d3, d4);
+        console.log("Lowest roll: ", lowestRoll)
+        let finalTotal = d1 + d2 + d3 + d4 - lowestRoll;
+        return finalTotal;
+        console.log("Final number: ", finalTotal);
+    }
+
+    function rollChar(){
+        //Strenght score
+        let strEl = document.getElementById("str");
+        let strStat = rollStat();
+        strEl.innerText = "STR: " + strStat;
+        //Dexterity score
+        let dexEl = document.getElementById("dex");
+        let dexStat = rollStat();
+        dexEl.innerText = "DEX: " + dexStat;
+        //Constitution score
+        let conEl = document.getElementById("con");
+        let conStat = rollStat();
+        conEl.innerText = "CON: " + conStat;
+        //Intelligence score
+        let intEl = document.getElementById("int");
+        let intStat = rollStat();
+        intEl.innerText = "INT: " + intStat;
+        //Wisdom score
+        let wisEl = document.getElementById("wis");
+        let wisStat = rollStat();
+        wisEl.innerText = "WIS: " + wisStat;
+        //Charisma score
+        let chaEl = document.getElementById("cha");
+        let chaStat = rollStat();
+        chaEl.innerText = "CHA: " + chaStat;
+    }
+    rollChar();
+    
+</script>
+
+</html>
